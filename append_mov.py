@@ -1,5 +1,6 @@
 """ 
 Change the file knob to end with .mov
+
 super-simple one-liner version:
 >>> nuke.selectedNode()["file"].setValue(os.path.splitext(nuke.selectedNode()["file"].value())[0] + ".mov")
 """
