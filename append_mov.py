@@ -1,13 +1,19 @@
+""" 
+Change the file knob to end with .mov
+super-simple one-liner version:
+>>> nuke.selectedNode()["file"].setValue(os.path.splitext(nuke.selectedNode()["file"].value())[0] + ".mov")
+"""
+
 import nuke
 
-# Get the 'file' knob from the selected node
+# Get the file knob
 file_knob = nuke.selectedNode().knob("file")
 
-# Get the current file path from the knob
+# Get the current file path
 current_path = file_knob.value()
 
-# Add ".mov" to the end of the current path
-new_path = current_path + ".mov"
+# Get the path without extension
+root, _ = os.path.splitext(current_path)
 
-# Set the new path back to the file knob
-file_knob.setValue(new_path)
+# Set the new file path with .mov
+file_knob.setValue(root + ".mov")
